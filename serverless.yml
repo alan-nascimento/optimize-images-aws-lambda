@@ -21,16 +21,16 @@ functions:
   optimize:
     handler: optimize.handle
     environment:
-      bucket: serverless
+      bucket: nodejs-image-optimize-aws-lambda
     eventS:
       - s3:
-          bucket: serverless
+          bucket: nodejs-image-optimize-aws-lambda
           event: s3:ObjectCreated:*
           rules:
             - preffix: uploads/
             - suffix: .jpg
       - s3:
-          bucket: serverless
+          bucket: nodejs-image-optimize-aws-lambda
           event: s3:ObjectCreated:*
           rules:
             - preffix: uploads/
