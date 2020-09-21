@@ -1,13 +1,11 @@
-'use-strict'
+import * as AWS from 'aws-sdk';
+import * as sharp from 'sharp';
+import { basename, extname } from 'path';
 
-const AWS = require('aws-sdk');
-const sharp = require('sharp')
-const { basename, extname } = require('path');
-
-const S3 = new AWS.S3()
-
-module.exports.handle = async ({ Records: records }, context) => {
+export default async function handle ({ Records: records }, context) {
   try {
+    const S3 = new AWS.S3()
+
     await Promise.all(records.map(async record => {
       const { key } = record.s3.object;
 
@@ -30,8 +28,7 @@ module.exports.handle = async ({ Records: records }, context) => {
     }));
 
     return {
-      statusCode: 301,
-      body: {}
+      statusCode: 204,
     }
   } catch (err) {
     return err;
