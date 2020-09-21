@@ -7,6 +7,7 @@ plugins:
 
 provider:
   name: aws
+  region: us-east-1
   runtime: nodejs12.x
   memorySize: 256
   iamRoleStatements:
@@ -21,17 +22,17 @@ functions:
   optimize:
     handler: optimize.handle
     environment:
-      bucket: nodejs-image-optimize-aws-lambda
-    eventS:
+      bucket: nodejs-image-optimization-aws-lambda
+    events:
       - s3:
-          bucket: nodejs-image-optimize-aws-lambda
+          bucket: nodejs-image-optimization-aws-lambda
           event: s3:ObjectCreated:*
           rules:
-            - preffix: uploads/
+            - prefix: uploads/
             - suffix: .jpg
       - s3:
-          bucket: nodejs-image-optimize-aws-lambda
+          bucket: nodejs-image-optimization-aws-lambda
           event: s3:ObjectCreated:*
           rules:
-            - preffix: uploads/
+            - prefix: uploads/
             - suffix: .png
