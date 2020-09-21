@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "predeploy": "rm -rf node_modules/sharp && yarn add --platform linux --arch=x64 --target=12.x sharp",
+    "deploy": "serverless deploy -v",
+    "postdeploy": "rm -rf node_modules/sharp && yarn add sharp"
+  },
   "devDependencies": {
     "@types/aws-sdk": "^2.7.0",
     "@types/sharp": "^0.26.0",
