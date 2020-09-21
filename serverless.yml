@@ -2,6 +2,9 @@ service: aws-lambda
 
 frameworkVersion: "2"
 
+plugins:
+  - serverless-plugin-typescript
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -15,8 +18,20 @@ provider:
         - "arn:aws:s3:::*"
 
 functions:
-  hello:
-    handler: handler.hello
-
-plugins:
-  - serverless-plugin-typescript
+  optimize:
+    handler: optimize.handle
+    environment:
+      bucket: serverless
+    eventS:
+      - s3:
+          bucket: serverless
+          event: s3:ObjectCreated:*
+          rules:
+            - preffix: uploads/
+            - suffix: .jpg
+      - s3:
+          bucket: serverless
+          event: s3:ObjectCreated:*
+          rules:
+            - preffix: uploads/
+            - suffix: .png
