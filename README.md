@@ -6,3 +6,4 @@
 
 - Serverless Node.js function with TypeScript
 - AWS Lambda and S3 integration
+- Deployment configs
