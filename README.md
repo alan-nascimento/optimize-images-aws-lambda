@@ -1,4 +1,4 @@
-# Optimeze Images AWS Lambda
+# Optimize Images AWS Lambda
 
 > A simple serverless function to optimize images on AWS S3 bucket upload event.
 
