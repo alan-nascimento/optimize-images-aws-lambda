@@ -1,6 +1,6 @@
 # Optimize Images AWS Lambda
 
-> A simple serverless function to optimize images on AWS S3 bucket upload event.
+> A simple serverless function to optimize images size on AWS S3 bucket upload event.
 
 ### What's in the repo?
 
